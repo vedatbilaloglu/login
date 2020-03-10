@@ -69,6 +69,8 @@ class _LoginPageState extends State<LoginPage> {
             _buildRegisterBtn(),
             SizedBox(height: 15.0,),
             _buildLoginBtn(),
+            SizedBox(height: 15.0,),
+            _buildSocialBtnRow(),
           ],
         ),
       ),
@@ -247,6 +249,65 @@ Widget _buildRememberMeCheckbox() {
             fontFamily: 'OpenSans',
           ),
         ),
+      ),
+    );
+  }
+
+   Widget _buildSocialBtn(Function onTap, AssetImage logo) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 60.0,
+        width: 60.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(0, 2),
+              blurRadius: 6.0,
+            ),
+          ],
+          image: DecorationImage(
+            image: logo,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSocialBtnRow() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 30.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          _buildSocialBtn(
+            () => print('Login with Facebook'),
+            AssetImage(
+              'assets/facebook.jpg',
+            ),
+          ),
+          _buildSocialBtn(
+            () => print('Login with Google'),
+            AssetImage(
+              'assets/google.jpg',
+            ),
+          ),
+          _buildSocialBtn(
+            () => print('Login with Instagram'),
+            AssetImage(
+              'assets/instagram.jpg',
+            ),
+          ),
+          _buildSocialBtn(
+            () => print('Login with Twitter'),
+            AssetImage(
+              'assets/twitter.jpg',
+            ),
+          ),
+        ],
       ),
     );
   }
