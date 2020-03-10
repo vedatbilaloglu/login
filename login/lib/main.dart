@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(App());
 
@@ -52,23 +53,22 @@ class _LoginPageState extends State<LoginPage> {
               ),
               textAlign: TextAlign.left,
             ),
-            SizedBox(height: 30.0,),
-            TextField(
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-          ),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-         //icon: sendIcon, 
-        hintText: 'Name',
-        hintStyle: TextStyle(
-          color: Colors.grey,
-          fontSize: 16.0,
-        ),
-      ),
-    ),
+            SizedBox(height: 45.0,),
+            buildTextField(),
+            SizedBox(height: 15.0,),
+            buildTextField1(),
+            SizedBox(height: 15.0,),
+            buildTextField2(),
+            SizedBox(height: 15.0,),
+            buildTextField3(),
+            SizedBox(height: 15.0,),
+            buildTextField4(),
+            SizedBox(height: 25.0,),
+            _buildRememberMeCheckbox(),
+            SizedBox(height: 15.0,),
+            _buildRegisterBtn(),
+            SizedBox(height: 15.0,),
+            _buildLoginBtn(),
           ],
         ),
       ),
@@ -83,6 +83,10 @@ class _LoginPageState extends State<LoginPage> {
           ),
           borderRadius: BorderRadius.circular(20.0),
         ),
+        suffixIcon: Icon(
+          Icons.supervised_user_circle,
+          color: Colors.redAccent,
+          ),
          //icon: sendIcon, 
         hintText: 'Name',
         hintStyle: TextStyle(
@@ -96,12 +100,15 @@ class _LoginPageState extends State<LoginPage> {
     return TextField(
       decoration: InputDecoration(
          //icon: sendIcon,
-        hintText: 'Name',
+        hintText: 'Surname',
         hintStyle: TextStyle(
           color: Colors.grey,
           fontSize: 16.0,
         ),
-        
+        suffixIcon: Icon(
+          Icons.person,
+          color: Colors.redAccent,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -112,12 +119,15 @@ class _LoginPageState extends State<LoginPage> {
     return TextField(
       decoration: InputDecoration(
          //icon: sendIcon,
-        hintText: 'Name',
+        hintText: 'Email',
         hintStyle: TextStyle(
           color: Colors.grey,
           fontSize: 16.0,
         ),
-        
+        suffixIcon: Icon(
+          Icons.email,
+          color: Colors.redAccent,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -128,12 +138,15 @@ class _LoginPageState extends State<LoginPage> {
     return TextField(
       decoration: InputDecoration(
          //icon: sendIcon,
-        hintText: 'Name',
+        hintText: 'Password',
         hintStyle: TextStyle(
           color: Colors.grey,
           fontSize: 16.0,
         ),
-        
+        suffixIcon: Icon(
+          Icons.lock,
+          color: Colors.redAccent,
+          ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -144,12 +157,15 @@ class _LoginPageState extends State<LoginPage> {
     return TextField(
       decoration: InputDecoration(
          //icon: sendIcon,
-        hintText: 'Name',
+        hintText: 'Confirm Password',
         hintStyle: TextStyle(
           color: Colors.grey,
           fontSize: 16.0,
         ),
-        
+        suffixIcon: Icon(
+          Icons.lock,
+          color: Colors.redAccent,
+          ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -157,3 +173,80 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+Widget _buildRememberMeCheckbox() {
+    return Container(
+      height: 20.0,
+      child: Row(
+        children: <Widget>[
+          Theme(
+            data: ThemeData(unselectedWidgetColor: Colors.white),
+            child: Checkbox(
+              value: true,
+              checkColor: Colors.redAccent,
+              activeColor: Colors.white,
+              onChanged: (value){
+                value = false;
+              },
+            ),
+          ),
+          Text(
+            'I agree terms & conditions and privacy policy',
+            style: TextStyle(
+              fontSize: 15.0,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRegisterBtn() {
+    return Container(
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () => print('Login Button Pressed'),
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Colors.redAccent,
+        child: Text(
+          'Register',
+          style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLoginBtn() {
+    return Container(
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: () => print('Login Button Pressed'),
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Colors.white,
+        child: Text(
+          'Login',
+          style: TextStyle(
+            color: Colors.redAccent,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
+  }
