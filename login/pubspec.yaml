@@ -10,9 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    
 
   
   cupertino_icons: ^0.1.2
+  flutter_svg: ^0.17.3+1
 
 dev_dependencies:
   flutter_test:
@@ -28,5 +30,6 @@ flutter:
     - assets/instagram.jpg
     - assets/twitter.jpg
     - assets/google.jpg
+    - assets/svg/search.svg
 
   

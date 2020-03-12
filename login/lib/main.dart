@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() => runApp(App());
 
@@ -21,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Icon searchIcon = new Icon(Icons.search, color: Colors.white,);
   Icon sendIcon = new Icon(Icons.send, color: Colors.black,);
+  static const searchSVG = 'assets/svg/search.svg';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,10 +34,21 @@ class _LoginPageState extends State<LoginPage> {
         ),
         backgroundColor: Colors.redAccent,
         actions: <Widget>[
+          /*
           IconButton(
             icon: searchIcon,
             onPressed: (){},
           )
+          */
+          
+            SvgPicture.asset(
+              searchSVG,
+              height: 30.0,
+              width: 30.0,
+              alignment: Alignment.centerRight,
+              color: Colors.white,
+          ),
+          
         ],
       ),
       body: Padding(
